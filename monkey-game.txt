@@ -1,0 +1,52 @@
+var player = createSprite(68,345,20,20);
+player.setAnimation("monkey");
+player.scale=0.15;
+var ground  = createSprite(312,392,400,20);
+ground.x = ground.width /2;
+var invisibleGround = createSprite(200,385,400,5);
+invisibleGround.visible = false;
+function food () {
+ if (World.frameCount % 100 === 0) {
+ food.y = randomNumber(120,200);
+var fruit = createSprite(212, 353,20,20);
+fruit.setAnimation("Banana");
+fruit.scale=0.10 ;
+fruit.velocityX=-3;
+fruit.lifetime=134;
+}
+}
+function obstacles() {
+   if(World.frameCount % 300 === 0) {
+var easy = createSprite(294,382,20,20);
+easy.setAnimation("Stone");
+ easy.scale=0.10; 
+ easy.lifetime=70;
+}
+}
+
+
+function draw(){
+background(255);
+drawSprites();
+food();
+obstacles();
+ if (ground.x < 0){
+ ground.x = ground.width/2; 
+ ground. velocityX =-12;
+}
+ if(keyDown("space") && player.y >= 345){
+      player.velocityY = -10 ;
+ playSound("jump.mp3");
+ player.velocityY = player.velocityY + 0.8;
+ }
+var  survivalTime=0;
+stroke("black");
+textSize(20);
+fill("black");
+survivalTime=Math.ceil(frameCount/frameRate());
+text("survivalTime:"+survivalTime,100,50);
+console.log(player.y) ;
+
+    
+  
+}
